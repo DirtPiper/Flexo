@@ -36,8 +36,8 @@ If multiple Tape Libraries are loaded, or if a Tape Library contains nested sub-
 #### CONTROL CODES
 Tapes may contain special control codes. Among these are:
 
-$$\color{RED},$$ STOP: stops Writing the Tape and waits for input from the user.
+$${\color{RED},}$$ STOP: stops Writing the Tape and waits for input from the user.
 
-$$\color{RED}:[\*.ft]&& READ: reads from a specified Tape and writes it beginning at that location.
+$${\color{RED}:}[\*.ft]&& READ: reads from a specified Tape and writes it beginning at that location.
 
-&&\color{RED}?[\*]&& QUERY:
+$$\color{RED}?[\*]}$$ QUERY:
