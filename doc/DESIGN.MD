@@ -40,4 +40,4 @@ $${\color{RED},}$$ STOP: stops Writing the Tape and waits for input from the use
 
 $${\color{RED}:}[\*.ft]$$ READ: reads from a specified Tape and writes it beginning at that location.
 
-$$\color{RED}?[\*]}$$ QUERY:
+$${\color{RED}?[\*]}$$ QUERY:
