@@ -38,14 +38,14 @@ Tapes may contain special control codes. Among these are:
 
 $${\color{RED},}$$ STOP: stops Writing the Tape and waits for input from the user.
 
-$${\color{RED}:[\*.ft]}$$ READ: reads from a specified Tape and writes it beginning at that location.
+$${\color{RED}(: \*.ft)}$$ READ: reads from a specified Tape and writes it beginning at that location.
 
-$${\color{RED}?[\*]}$$ QUERY: gets a value stored in a variable.
+$${\color{RED}(? \*)}$$ QUERY: gets a value stored in a variable. If the variable is unset, ask the user.
 
-$${\color{RED}+[\*, \*]}$$ SET: sets a value stored in a variable, or creates the variable if it doesn't exist already.
+$${\color{RED}(+ \*  \*)}$$ SET: sets a value stored in a variable, or creates the variable if it doesn't exist already.
 
-$${\color{RED}<[\*, \\#, \*]}$$ IFLESS: if a value stored in a variable is less than a value, do something
+$${\color{RED}(< \*, \\#, \*)}$$ IFLESS: if a value stored in a variable is less than a value, do something
 
-$${\color{RED}>[\*, \\#, \*]}$$ IFMORE: if a value stored in a variable is more than a value, do something
+$${\color{RED}(> \*, \\#, \*)}$$ IFMORE: if a value stored in a variable is more than a value, do something
 
-$${\color{RED}=[\*, \\#, \*]}$$ IFSAME: if a value stored in a variable is equal to a value, do something
+$${\color{RED}(=\*, \\#, \*)}$$ IFSAME: if a value stored in a variable is equal to a value, do something
