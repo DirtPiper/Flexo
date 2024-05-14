@@ -1,5 +1,3 @@
-# Flexo
-
  ![Banner](Flexowriter.PNG)
 
  Flexowriter - the text editor that didn't
