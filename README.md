@@ -2,8 +2,10 @@
  Flexowriter - the text editor that didn't
  
  Back before there was Notepad, or Nano, or Vi, or Emacs, or TECO, or even the Teletypes model 35/33/28, there was...
- 
+  
  THE FLEXOWRITER.
+ 
+ ![This one, to be specific.](Flexowriter.PNG)
  
  Manufactured by IBM, then CCC, then Friden, the Singer, the Flexowriter was among the first "programmable" automatic typewriters - being designed to accelerate secretarial work by typing documents read from paper tape or punched cards. By using multiple tape readers, one could even do a fully mechanical mail merge - with one looped tape containing the form letter itself, and another tape (or set of tapes, or stack of punched cards) containing names, addresses, etc.
  
