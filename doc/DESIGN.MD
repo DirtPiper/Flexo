@@ -6,7 +6,9 @@ User -> Keyboard -> Code Selector(s) -> (Tapes ->) Writer -> Text
 
 ## VIEWING TEXT
 When flexo is displaying text, two modes may be used (toggleable via the Scroll Lock key):
+
 	**Flexo mode**: the cursor remains static, and the text moves around it as you type (as on a Flexowriter, or any other typewriter/teleprinter where the platen is on the carriage)
+	
 	**TTY mode**: the text remains static, and the cursor moves around it as you type (as on a Teletype, or any other typewriter/teleprinter where the type element(s) is/are on the carriage)
 	
 Flexo mode is the default. 
