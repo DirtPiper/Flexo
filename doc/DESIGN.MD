@@ -38,6 +38,6 @@ Tapes may contain special control codes. Among these are:
 
 $${\color{RED},}$$ STOP: stops Writing the Tape and waits for input from the user.
 
-$${\color{RED}:}[\*.ft]&& READ: reads from a specified Tape and writes it beginning at that location.
+$${\color{RED}:}[\*.ft]$$ READ: reads from a specified Tape and writes it beginning at that location.
 
 $$\color{RED}?[\*]}$$ QUERY:
