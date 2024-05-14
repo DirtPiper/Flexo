@@ -1,7 +1,8 @@
-# ROUGH DESIGN SPECS
-To be written in lua, with lcurses(?) and, maybe, a LISP-like macro system for lua. Some people have [already made this](https://github.com/differentprogramming/lua-macro).
+# FLEXO DESIGN SPECS
+To be written in lua, with lcurses(?).
 
-Keyboard -> Code Selector(s) -> (Tapes ->) Writer -> Text
+User -> Keyboard -> Code Selector(s) -> (Tapes ->) Writer -> Text
+(Everything between Keyboard and Writer may be rearranged as the user pleases - Flexo is Flexible!)
 
 ## VIEWING TEXT
 When flexo is displaying text, two modes may be used (toggleable via the Scroll Lock key):
@@ -36,9 +37,9 @@ If multiple Tape Libraries are loaded, or if a Tape Library contains nested sub-
 #### CONTROL CODES
 Tapes may contain special control codes. Among these are:
 
-$${\color{RED},}$$ STOP: stops Writing the Tape and waits for input from the user.
+$${\color{RED}(.)}$$ STOP: stops Writing the Tape and waits for input from the user.
 
-$${\color{RED}(: \space \*.ft)}$$ READ: reads from a specified Tape and writes it beginning at that location.
+$${\color{RED}(; \space \*.ft)}$$ READ: reads from a specified Tape and writes it beginning at that location.
 
 $${\color{RED}(? \space \*)}$$ QUERY: gets a value stored in a variable. If the variable is unset, ask the user.
 
@@ -49,3 +50,11 @@ $${\color{RED}(< \* \space \\# \space \*)}$$ IFLESS: if a value stored in a vari
 $${\color{RED}(> \* \space \\# \space \*)}$$ IFMORE: if a value stored in a variable is more than a value, do something
 
 $${\color{RED}(=\* \space \\# \space \*)}$$ IFSAME: if a value stored in a variable is equal to a value, do something
+
+$${\color{RED}(: \space \*)}$$ JUMP: continues reading the Tape from the specified line number.
+
+$${\color{RED}(: \space \* \space \*)}$$ JUMP: continues reading the Tape from the specified line number and character number.
+
+You may have noticed that Flexo Tapes are both turing complete and a bit LISP-y. You saw nothing.
+
+Tapes have scope! A child Tape read by another Tape may access variables set by its Parent.
