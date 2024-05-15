@@ -15,15 +15,16 @@ local function main ()
 	
 	local quitting = false;
 	local escaped = false;
+	local returning = 0;
 	local width = curses.cols()
 	local height = curses.lines()
 	local pageX = width / 2
 	local pageY = height / 4
-	local posX = 10
-	local posY = 10
+	local posX = 1
+	local posY = 1
 
 
-	local page = curses.newwin(posY, posX, pageX, pageY)
+	local page = curses.newwin(10, 10, pageX, pageY)
 	page:move(pageY, pageX)
 	print("ffff")
 	stdscr:refresh ()
@@ -59,14 +60,13 @@ local function main ()
 			stdscr:mvaddstr (height - 1, width - 5, "    ")
 			if c == 13 then --newline
 				posY = posY + 1
-				posX = 0
+				pageY = pageY - 1
+				posX = 1
+				returning = true
 				line = line + 1
 				all_lines[line] = currline
 				currline = ""
 				stdscr:erase()				
-				stdscr:mvaddstr (height - 1, 0, "FLEXO ALPHA 0.0.1")
-				stdscr:mvaddstr (height - 1, width / 2, "char: "..c.." ")
-				stdscr:mvaddstr (height - 1, width / 4, "lines: "..line+1)
 			end
 			if c == 127 then --backspace
 				posX = posX - 2
@@ -77,24 +77,35 @@ local function main ()
 			--pageX = pageX - 1
 			--page:mvaddch (pageX, pageY, c)
 			--pageX = pageX + 1
-			page:resize(line + 10, max_row_length)
-			page:move_window(pageY - line, pageX - string.len(currline))	
-			--page:erase()
+			page:erase()			
+			stdscr:erase ()
+			stdscr:mvaddstr (height - 1, 0, "FLEXO ALPHA 0.0.1")
+			stdscr:mvaddstr (height - 1, width / 2, "char: "..c.." ")
+			stdscr:mvaddstr (height - 1, width / 4, "lines: "..line+1)
+			page:move_window(pageY, pageX - string.len(currline))	
+			page:resize(line + 10, max_row_length + 1)
+			stdscr:clearok(true)
+			--page:move_window(line, 1)
+			page:erase()
 			stdscr:refresh ()
-			--page:redrawwin()		
+			--page:redrawwin()	
+			--page:move(pageY +line, pageX)	
+			stdscr:refresh ()
 			for i,v in ipairs(all_lines) do
-				page:move(pageY - line + i, pageX + string.len(v))
-				page:winsstr(v)	
+				page:move(i, 1)--string.len(v))		
+				page:leaveok(true)
+				page:winsstr(v)		
+				page:leaveok(true)
+				stdscr:refresh ()
 			end
-			page:move(pageY - 1, pageX)			
-			page:leaveok(true)
-			stdscr:refresh ()		
-			page:border()
-			page:winsstr(currline)
+			page:move(posY, 1)		
+			page:leaveok(true)		
+			page:winsstr(currline)		
+			page:border()	
 			stdscr:refresh ()	
 		end
-		if posX > max_row_length then
-			max_row_length = posX
+		if posX > max_row_length - 1 then
+			max_row_length = posX + 1
 		end
 		stdscr:refresh ()
 	end
