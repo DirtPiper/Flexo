@@ -89,10 +89,12 @@ function processKey(key)
 			moveCol(-1)
 		elseif key == 127 then --backspace
 			moveCol(-1)
-			allLines[currLine] = string.sub(allLines[currLine], 0, posX - 1)..string.sub(allLines[currLine], posX + 1)
+			--allLines[currLine] = string.sub(allLines[currLine], 0, posX - 1)..string.sub(allLines[currLine], posX + 1)
+			text = string.sub(text, 0, getPosInText(posX - 1, posY))..string.sub(text, getPosInText(posX + 1, posY))
 		elseif key < 256 and key > 30 then 
 			car = string.char (key) 
-			allLines[currLine] = string.sub(allLines[currLine], 0, posX)..car..string.sub(allLines[currLine], posX + 1)
+			--allLines[currLine] = string.sub(allLines[currLine], 0, posX)..car..string.sub(allLines[currLine], posX + 1)
+			text = string.sub(text, 0, getPosInText(posX - 1, posY))..car..string.sub(text, getPosInText(posX + 1, posY))
 			posX = posX + #car
 		end
 		page:erase()			
@@ -103,10 +105,17 @@ function processKey(key)
 		page:erase()
 		stdscr:refresh ()
 		stdscr:refresh ()
-		for i,v in ipairs(allLines) do
+		--[[for i,v in ipairs(allLines) do
 			page:move(i, 1)	
 			page:leaveok(true)
 			page:winsstr(v)		
+			page:leaveok(true)
+			stdscr:refresh ()
+		end--]]
+		for i=1, posY do
+			page:move(i, 1)
+			page:leaveok(true)
+			page:winsstr(getLine(i))		
 			page:leaveok(true)
 			stdscr:refresh ()
 		end
@@ -148,6 +157,15 @@ function setCol(pos)
 	posX = pos
 end
 
+function getPosInText(x, y)
+	chars = x
+	for i=1, y do
+		lin = getLine(y)
+		chars = chars + #lin
+	end
+	return chars
+end
+
 function getLine(i)
 	line = ""
 	checked = 0;
@@ -156,12 +174,12 @@ function getLine(i)
 	lastNewLine = 0
 	while checked < #text and newLines ~= i do
 		checked = checked + 1
-		if string.sub(text, checked, 1).equals(string.char(10)) then
+		if string.sub(text, checked, 1) == string.char(10) then
 			lastNewLine = newLinePos
 			newLinePos = checked
 			newLines = newLines + 1
 		end
-		if newLines == i do
+		if newLines == i then
 			line = string.sub(text, lastNewLine, checked)
 		end
 	end
