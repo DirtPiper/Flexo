@@ -57,6 +57,6 @@ $${\color{RED}(: \space \*)}$$ JUMP: continues reading the Tape from the specifi
 
 $${\color{RED}(: \space \* \space \*)}$$ JUMP: continues reading the Tape from the specified line number and character number.
 
-You may have noticed that Flexo Tapes are both turing complete and a bit LISP-y. You saw nothing.
+You may have noticed that Flexo Tapes are both turing complete and vaguely almost LISP-y. You saw nothing.
 
 Tapes have scope! A child Tape read by another Tape may access variables set by its Parent.
